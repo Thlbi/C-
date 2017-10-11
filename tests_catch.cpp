@@ -13,7 +13,7 @@ TEST_CASE("Constructeur par defaut") {
 TEST_CASE("Constructeur par chaine C") {
 	char  source []= "rien";
     Chaine c1(source);
-    CHECK( strlen(source) == c1.getCapacite() );
+    CHECK( (signed)strlen(source) == c1.getCapacite() );
     CHECK( 0 == strcmp(source, c1.c_str()) ); 
 
     Chaine c2 = "";
