@@ -54,7 +54,7 @@ TEST_CASE("Constructeur de copie") {
 /*
 TEST_CASE("methode afficher") {
 	const char * original = "une chaine a tester";
-    Chaine c1(original);
+    const Chaine c1(original);
     std::stringstream ss;
     
     c1.afficher(); // on verifie juste que ca compile
