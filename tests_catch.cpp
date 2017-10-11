@@ -10,6 +10,13 @@ TEST_CASE("Constructeur par defaut") {
 }
 
 /*
+TEST_CASE("Verification des const sur les accesseurs") {
+   const Chaine c;
+   CHECK( -1 == c.getCapacite());
+   CHECK(  0 == c.c_str()); // 0, NULL, ou nullptr
+} */
+
+/*
 TEST_CASE("Constructeur par chaine C") {
 	char  source []= "rien";
     Chaine c1(source);
@@ -75,7 +82,7 @@ TEST_CASE("Surcharge <<") {
 	const char * chaine = "une nouvelle surcharge";
 	Chaine s(chaine);
     std::stringstream ss;
-    //ss << s; 
+    // ss << s;  // :-)
 
     CHECK( ss.str() == chaine ); //  test de std::string, again :-))
 }
