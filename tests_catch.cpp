@@ -14,11 +14,11 @@ TEST_CASE("Constructeur par chaine C") {
 	char  source []= "rien";
     Chaine c1(source);
     CHECK( strlen(source) == c1.getCapacite() );
-    CHECK( 0 == strcmp(source, c1.c_str()) ); // 0, NULL, ou nullptr
+    CHECK( 0 == strcmp(source, c1.c_str()) ); 
 
     Chaine c2 = "";
     CHECK( 0 == c2.getCapacite() );
-    CHECK( 0 == strcmp("", c2.c_str())); // 0, NULL, ou nullptr
+    CHECK( 0 == strcmp("", c2.c_str())); 
 
     // Verifier que la liberation memoire est bien faite
 } */
@@ -27,7 +27,7 @@ TEST_CASE("Constructeur par chaine C") {
 TEST_CASE("Constructeur avec capacite") {
     Chaine c1(6);
     CHECK( 6 == c1.getCapacite());
-    CHECK( 0 == strlen(c1.c_str())); // 0, NULL, ou nullptr
+    CHECK( 0 == strlen(c1.c_str())); 
 
     // Verifier que la liberation memoire est bien faite
 }*/
