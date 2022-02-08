@@ -17,5 +17,7 @@ int main(int, char **)
     l.addForme(c1);
     l.addForme(&r1);
     std::cout<<l.toString()<<std::endl;
+    delete c1;
+    delete c2;
     return 0;
 }

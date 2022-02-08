@@ -12,6 +12,8 @@ Rectangle::Rectangle(int x, int y, int w, int h) : Forme(w,h,COULEURS::JAUNE,x,y
 {
     std::cout << "Avec arguments" << std::endl;
 }
+Rectangle::~Rectangle(){
+}
 /*
 int Rectangle::getX()
 {

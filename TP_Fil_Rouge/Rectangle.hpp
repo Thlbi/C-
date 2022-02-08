@@ -9,6 +9,7 @@ class Rectangle : public Forme
     int _ordre;
 public:
     Rectangle();
+    ~Rectangle();
     Rectangle(int, int,int,int);
     void setOrdre(int);
     std::string toString();

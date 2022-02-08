@@ -17,10 +17,12 @@ Cercle::Cercle(int rayon, COULEURS couleur, int x,int y) : Forme(rayon*2,rayon*2
 {
     std::cout << "Avec argument rayon" << std::endl;
 }
+Cercle::~Cercle(){
 
+};
 
 std::string Cercle::toString(){
-    return "CERCLE "+ std::to_string(_point.getX())+ " " +std::to_string(_point.getY()) ;
+    return "CERCLE "+std::to_string(_point.getX()) + " " +std::to_string(_point.getY()) +" "+ std::to_string(getLargeur())+ " " +std::to_string(getHauteur()) ;
 }
 
 void Cercle::setOrdre(int ordre){

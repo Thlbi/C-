@@ -6,6 +6,7 @@
 #include "Rectangle.hpp"
 #include "Forme.hpp"
 #include "Cercle.hpp"
+#include "Groupe.hpp"
 // NOTE : ce test utilise des enum "class"
 // il faut donc utiliser un compilateur g++ >= 6.1
 // ou activer l'option c++11 du compilateur
@@ -104,12 +105,12 @@ TEST_CASE("Cercle", "[Cercle]") {
    Cercle c1;
    Cercle c2(5,COULEURS::BLANC,Point(5,5)); 
    
-   REQUIRE(c1.toString() == "CERCLE 0 0");
-   REQUIRE(c2.toString() == "CERCLE 5 5");
+   REQUIRE(c1.toString() == "CERCLE 0 0 0 0");
+   REQUIRE(c2.toString() == "CERCLE 5 5 10 10");
 
    c2.setRayon(5);
    REQUIRE(c2.getRayon()   == 5  );
-   REQUIRE(c2.toString()   == "CERCLE 5 5");
+   REQUIRE(c2.toString()   == "CERCLE 5 5 10 10");
    REQUIRE(c2.getLargeur() == 10);
    REQUIRE(c2.getHauteur() == 10);  
 
@@ -130,6 +131,18 @@ TEST_CASE("Rectangle", "[Reclangle]") {
    REQUIRE(Forme::prochainId() == (compteur+2) ); 
 }
 
+TEST_CASE("Groupe", "[Groupe]") {
+    Rectangle r1(5, 5, 5, 5);
+    Cercle c1(6,COULEURS::JAUNE,10,5);
+    Groupe l;
+    l.addForme(&c1);
+    l.addForme(&r1);
+
+	REQUIRE(l.getCompteur() == 2);
+
+	REQUIRE(l.toString()== "Le groupe fait :17 22. Les formes sont :CERCLE 10 5 12 12 RECTANGLE 5 5 5 5 ");
+
+}
 /*
 TEST_CASE("BoiteEnglobante", "[Forme]") {
 	Forme f;

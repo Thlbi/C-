@@ -2,12 +2,10 @@
 
 int Groupe::compteur = 0;
 
-Groupe::Groupe():nb_f(0){
+Groupe::Groupe(){
 }
 Groupe::~Groupe(){
-    for(int i=0;i<compteur;i++){
-        delete[] formes[i];
-    } 
+
 }
 
 int Groupe::getCompteur(){
@@ -17,12 +15,23 @@ int Groupe::getCompteur(){
 
 
 void Groupe::addForme(Forme * f){
-    std::cout << "Forme ajoutee " << std::endl;
+    if (_point.getX()+_w<f->getPoint().getX()+f->getLargeur()){
+        _w+=f->getPoint().getX()+f->getLargeur() - _point.getX()+_w;
+    }
+    if (_point.getY()+_h<f->getPoint().getY()+f->getHauteur()){
+        _h+=f->getPoint().getY()+f->getHauteur()-_point.getY()+_h;
+    }
+    formes[compteur]=f;
+    compteur+=1;        
 }
 
 std::string Groupe::toString(){
-    std::string string = "Les formes sont :";
-    for(int i=0; i<nb_f;i++){
+    std::string string = "Le groupe fait :";
+    string += std::to_string(getHauteur());
+    string += " ";
+    string += std::to_string(getLargeur()); 
+    string+=". Les formes sont :";
+    for(int i=0; i<compteur;i++){
         string+=formes[i]->toString();
         string+=" ";
     }

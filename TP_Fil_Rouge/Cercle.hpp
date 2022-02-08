@@ -11,6 +11,7 @@ class Cercle : public Forme
     int _rayon;
 public:
     Cercle();
+    ~Cercle();
     Cercle(int rayon,COULEURS,Point);
     Cercle(int rayon,COULEURS,int x,int y);
     void setOrdre(int);

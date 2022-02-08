@@ -3,7 +3,7 @@ SRC=Rectangle.cpp Cercle.cpp Groupe.cpp Forme.cpp Point.cpp
 #SRC=$(wildcard *.cpp)  
 EXE=main
 
-CXX=g++-8
+CXX=g++
 CXXFLAGS+= -Wall -Wextra -MMD -g -O2 -fdiagnostics-color=auto -lstdc++
 LDFLAGS= #-lSDL
 
