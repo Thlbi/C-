@@ -5,7 +5,7 @@ Chaine::Chaine() : _capacite(-1), _tab(nullptr)
 {
 }
 
-Chaine::Chaine(const char *inCS) : _capacite(strlen(inCS)), _tab(new char[_capacite])
+Chaine::Chaine(const char *inCS) : _capacite(strlen(inCS)), _tab(new char[_capacite + 1])
 {
     strcpy(_tab, inCS);
 }
@@ -56,7 +56,7 @@ Chaine &Chaine::operator=(const Chaine &c)
         _capacite = c._capacite;
         if (_capacite != -1)
         {
-            _tab = new char[_capacite];
+            _tab = new char[_capacite + 1];
             strcpy(_tab, c._tab);
         }
         else
@@ -74,4 +74,34 @@ std::ostream &operator<<(std::ostream &o, const Chaine &c)
         o << c.c_str();
     }
     return o;
+}
+
+char &Chaine::operator[](int i)
+{
+    if ((i < 0) || (_capacite < i) || !_tab)
+    {
+        std::cerr << "Problème d'index" << std::endl;
+        std::exit(1);
+    }
+    return _tab[i];
+}
+
+char Chaine::operator[](int i) const
+{
+    if ((i < 0) || (_capacite < i) || !_tab)
+    {
+        std::cerr << "Problème d'index" << std::endl;
+        std::exit(1);
+    }
+    return _tab[i];
+}
+
+Chaine operator+(const Chaine &c1, const Chaine &c2)
+{
+    char *tab = new char[c1.getCapacite() + c2.getCapacite() + 1];
+    strcpy(tab, c1.c_str());
+    strcat(tab, c2.c_str());
+    Chaine c(tab);
+    delete[] tab;
+    return c;
 }

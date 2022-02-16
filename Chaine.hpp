@@ -19,6 +19,9 @@ public:
     int getCapacite() const;
     void afficher(std::ostream &o = std::cout) const;
     Chaine &operator=(const Chaine &);
+    char &operator[](int i);
+    char operator[](int i) const;
 };
 std::ostream &operator<<(std::ostream &, const Chaine &);
+Chaine operator+(const Chaine &c1, const Chaine &c2);
 #endif

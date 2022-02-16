@@ -87,3 +87,15 @@ TEST_CASE("Surcharge <<")
 
     CHECK(ss.str() == chaine); //  test de std::string, again :-))
 }
+
+TEST_CASE("Surcharge []")
+{
+    Chaine s1("La lettre a");
+    const Chaine &s2 = s1;
+    s1[10] = 'b';
+
+    Chaine s = s1 + s2;
+    CHECK(0 == strcmp(s1.c_str(), "La lettre b"));
+    CHECK(s2[10] == 'b');
+    CHECK(0 == strcmp(s.c_str(), "La lettre bLa lettre b"));
+}
