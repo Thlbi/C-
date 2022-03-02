@@ -114,11 +114,11 @@ TEST_CASE("Vecteur2")
     REQUIRE(v.capacity() == 20);
     REQUIRE(v.size() == 0);
 }
-
+/*
 TEST_CASE("Vecteur3")
 {
     Vecteur v(5);
-
+    
     SECTION("ajout de quelques elements")
     {
         REQUIRE(v.capacity() == 5);
@@ -128,28 +128,30 @@ TEST_CASE("Vecteur3")
 
         REQUIRE(v.size() == 4);
     }
-    /*
+    
     SECTION("tableau un peu agrandi")
     {
         // on peut verifier que vecteur est bien un nouveau :-)
         REQUIRE(v.capacity() == 5);
-        for (int i = 0; i < 6; ++i)
+        for (int i = 0; i < 10; ++i)
             v.push_back(i * 1.0);
 
         REQUIRE(v.capacity() == 10);
-        REQUIRE(v.size() == 6);
+        REQUIRE(v.size() == 10);
     }
-
+    
+    /*
     SECTION("on verifie les valeurs dans le vecteur")
     {
         for (int i = 0; i < 25; ++i)
             v.push_back(i * 1.0);
-
+        
         REQUIRE(v.capacity() == 40);
         REQUIRE(v.size() == 25);
-
+    
         for (int i = 0; i < 25; ++i)
             CHECK(v[i] == Approx(i * 1.0)); // :-)
+            
     }
     
     SECTION("on verifie les exceptions")
@@ -157,5 +159,19 @@ TEST_CASE("Vecteur3")
         REQUIRE_THROWS_AS(v[-1] == 0, Vecteur::OutOfRangeException);
         REQUIRE_THROWS_AS(v[6] == 0, std::bad_alloc); // :-)
     }
-    */
+    
+}
+*/
+TEST_CASE("exceptions aux bornes") {
+    Chaine s(10);
+    REQUIRE_THROWS_AS( s[-1] == 0, Chaine::OutOfRangeException);
+}
+TEST_CASE("exception sur pointeur null") {
+  Chaine s(0);
+    
+  // verification que l'heritage est bien fait  
+  std::logic_error * pe = new null_pointer;  
+  delete pe;
+
+  REQUIRE_THROWS_AS( s[1] == 0, null_pointer);
 }

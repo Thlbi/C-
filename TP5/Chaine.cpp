@@ -80,9 +80,10 @@ char &Chaine::operator[](int i)
 {
     if ((i < 0) || (_capacite < i) || !_tab)
     {
-        std::cerr << "Problème d'index" << std::endl;
-        std::exit(1);
+        throw OutOfRangeException();
     }
+
+
     return _tab[i];
 }
 
@@ -90,8 +91,7 @@ char Chaine::operator[](int i) const
 {
     if ((i < 0) || (_capacite < i) || !_tab)
     {
-        std::cerr << "Problème d'index" << std::endl;
-        std::exit(1);
+       
     }
     return _tab[i];
 }

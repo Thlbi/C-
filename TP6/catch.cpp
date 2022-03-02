@@ -1,0 +1,56 @@
+#include <iostream>
+#include <fstream>
+#include <cstring>
+
+class M {
+ public:  
+  M() {
+    std::cout << "M::M()" << std::endl;
+  }
+   ~M() {
+    std::cout << "M::~M()" << std::endl;
+  }
+    M(const M&) {
+    std::cout << "M::M(const M&)" << std::endl;
+  }
+    M & operator=(const M &c){
+    if (&c != this)
+    { 
+        std::cout << "M::="<<std::endl;
+    }
+    return *this;
+    }
+  
+};
+
+class F : public M {
+ public:
+  F() {
+    std::cout << "F::F()" << std::endl;
+  }  
+~F() {
+    std::cout << "F::~F()" << std::endl;
+  }
+ 
+  F(const F& f) {
+    std::cout << "F::F(const F&)" << std::endl;
+  }
+    F & operator=(const F &c){
+    if (&c != this)
+    { 
+        std::cout << "F::="<<std::endl;
+    }
+    return *this;
+    } 
+
+};
+
+int main(int, char**) {
+
+  F f1;
+  F f2 = f1;
+  
+  f1 = f2;
+
+  return 0;
+}
